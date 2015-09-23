@@ -1,0 +1,12 @@
+{
+  "name": "node-img-http-getter",
+  "version": "0.1.0",
+  "description": "Get Images from http or https url and show it for modification",
+  "author": "Vadim Gromov <scholar.vadim@gmail.com> (https://github.com/scholarvadim85)",
+  "main": "app.js",
+  "license": "MIT",
+  "dependencies": {
+    "request": "*",
+    "underscore": "*"
+  }
+}
