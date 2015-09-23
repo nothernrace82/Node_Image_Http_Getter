@@ -22,6 +22,23 @@ function onRequest(req, res) {
 		});
 		req.on('end', function() {
 			var POST = qs.parse(body);
+			var file_name = POST.img_url.split("/").pop();
+
+			var request = http.get(POST.img_url, function(res) {
+				var imageData = '';
+				res.setEncoding('binary');
+
+				res.on('data', function(chunk) {
+					imageData += chunk;
+				});
+				res.on('end', function(chunk) {
+					fs.writeFile('./img_cache/' + file_name, imageData, 'binary', function(err) {
+						if(err) throw err;
+						console.log('File saved');
+					})
+				});
+			});
+			
 			res.end('Image url is ' + POST.img_url);
 		});
 	} else { // GET method case
